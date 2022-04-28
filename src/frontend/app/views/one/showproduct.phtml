@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <a href="addorder" class="btn btn-primary" >addorder</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">name</th>
+                <th scope="col">price</th>
+                <th scope="col">quantity</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+            <?php
+
+
+            if (isset($message)) {
+                $str = '';
+
+                for ($i = 0; $i < count($message); $i++) {
+                    if ($message[$i]['quantity'] > 0) {
+                        $msg = $message[$i]['quantity'];
+                    } else {
+                        $msg = "out of stock";
+                    }
+
+                    $str .= ' <tr>
+            <th>' . $message[$i]['productname'] . '</th>
+            <td >' . $message[$i]['price'] . '</td>
+            <td>' . $msg . '</td>
+            <td> </td>
+          </tr>';
+                    // }
+                }
+
+                echo $str . ' </tbody>
+        </table>';
+            }
+
+
+            ?>
+
+</body>
+
+</html>

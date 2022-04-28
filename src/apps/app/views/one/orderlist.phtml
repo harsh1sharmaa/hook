@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <?php
+        $todaydate = date("Y-m-d");
+        $weekdate = date('d-m-Y', strtotime($todaydate . ' -7 days'));
+        $monthdate = date('d-m-Y', strtotime($todaydate . ' -30 days'));
+        $status = array("paid", "processing", "dispatched", "shipped", "refunded");
+        $dropfilter = '<select id="name"  name="getstatus">';
+        for ($i = 0; $i < count($status); $i++) {
+
+
+            $dropfilter .= '<option value ="' . $status[$i] . '" selected>' . $status[$i] . '</option>';
+        }
+        $dropfilter .= '</select>';
+
+
+
+        ?>
+      
+
+        <form method="post" action="" id="filterForm">
+
+            <?php echo $dropfilter; ?>
+            <div>
+                <select id="date" name="filterdate">
+                    <option value="today"><?php echo $this->locale->_("today") ?></option>
+                    <option value="this week"><?php echo $this->locale->_("this week") ?></option>
+                    <option value="this month"><?php echo $this->locale->_("this month") ?></option>
+                    <option value="custom"><?php echo $this->locale->_("custom") ?></option>
+                </select>
+            </div>
+
+            <input type="submit" name="submit" value="submit">
+
+
+        </form>
+
+
+ 
+    </div>
+
+    <div>
+        <table class="table table-dark table-striped" id="table">
+            <thead>
+                <tr>
+                    <th scope="col"><?php echo $this->locale->_("product_id") ?>product_id</th>
+                    <th scope="col"><?php echo $this->locale->_("variation") ?></th>
+                    <th scope="col"><?php echo $this->locale->_("customer-Name") ?></th>
+                    <th scope="col"><?php echo $this->locale->_("quantity") ?></th>
+                    <th scope="col"><?php echo $this->locale->_("created") ?></th>
+                    <th scope="col"><?php echo $this->locale->_("status") ?></th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <?php
+
+                $status = array("paid", "processing", "dispatched", "shipped", "refunded");
+                if (isset($message)) {
+
+                    $ans = $message;
+                    $str = "";
+                    foreach ($ans as $key => $val) {
+
+                        $currstatus = $val->status;
+                     
+                        $drop = '<input type="hidden" name="orderId" class="orderId" value="' . $val->_id . '"><select name="status"  onchange="this.form.submit()" class="status">';
+                        for ($i = 0; $i < count($status); $i++) {
+
+                            if (strcmp($status[$i], $currstatus)) {
+
+                                $drop .= '<option value ="' . $status[$i] . '">' . $status[$i] . '</option>';
+                            } else {
+                                $drop .= '<option value ="' . $status[$i] . '" selected>' . $status[$i] . '</option>';
+                            }
+                        }
+                        $drop .= '</select>';
+
+
+
+                        $str .= '<tr>
+        <td> ' . $val->productId . '</td>
+        <td>' . $val->variation . '</td>
+        <td>' . $val->coustomername  . '</td>
+        <td>' . $val->quantity  . '</td>
+        <td>' . $val->created  . '</td>
+        <td><form method="post"  action="" >' . $drop . '</form></td>
+      
+      </tr>';
+                    }
+                }
+
+
+                echo $str . '</tbody></table>';
+
+                ?>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="../../../public/jsf/order.js"></script>
+
+
+</html>

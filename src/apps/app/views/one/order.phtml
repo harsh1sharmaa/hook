@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   
+    <div id="form">
+
+        <?php
+
+    
+        
+      
+        if (isset($message)) {
+
+
+            $str = '<form method="post"  action=""><select id="name"  ;" name="id">';
+            foreach ($message as $key => $produc) {
+
+                $info = $produc->info;
+                $variation = $produc->variation;
+
+                for ($i = 0; $i < count($variation); $i++) {
+
+                    $vari = $variation[$i];
+                }
+                $str .= '<option value="' . $produc->_id . '">' . $info->name . '</option>';
+            }
+
+            $str .= '</select>
+
+      
+        ';
+        }
+
+        echo $str;
+        ?>
+        <div id="dwop2">
+
+        </div>
+        <div>
+        <?php echo $this->locale->_("name") ?>  <input type="text" name="coustomername" >
+        </div>
+      
+        <div>
+        <?php echo $this->locale->_("quantity") ?>  <input type="number" name="quantity" >
+        </div>
+      
+        <div>
+              <input type="submit" name="submit" value=<?php echo $this->locale->_("save") ?> >
+        </div>
+        </form>
+        <?php
+
+
+
+
+        ?>
+    </div>
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- <script src="../../../public/jsf/order.js"></script> -->
+<!-- <script src="../../jsf/order.js"></script> -->
+<script src="order.js"></script>
+
+
+</html>

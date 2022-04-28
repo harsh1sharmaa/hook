@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <?php
+
+    if (isset($message)) {
+
+
+        $str = '<form method="post"  action=""><select id="name"  ;" name="skuid">';
+
+        for ($i = 0; $i < count($message); $i++) {
+            if ($message[$i]['quantity'] > 0) {
+
+                $str .= '<option value="' . $message[$i]["sku"] . '">' . $message[$i]["productname"] . '</option>';
+            }
+        }
+
+        $str .= '</select>';
+    }
+
+
+    ?>
+
+    <div>
+        <form method="post" action="" class="form w-50 m-auto">
+            <!-- <input type="text" name="pname" placeholder="productname"> -->
+            <?php echo $str; ?>
+            <p><input type="text" name="uname" placeholder="username" class="form-control"></p>
+            <p> <input type="number" name="quantity" placeholder="quantity" class="form-control"></p>
+            <p><input type="email" name="email" placeholder="example@.com" class="form-control"></p>
+            <p><input type="text" name="token" placeholder="TOKEN" class="form-control"></p>
+            <p><input type="submit" name="submit" value="place Order" class="btn btn-primary"></p>
+        </form>
+    </div>
+</body>
+
+</html>

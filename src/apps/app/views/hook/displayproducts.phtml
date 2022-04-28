@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="addproduct" class="btn btn-primary m-4">add product</a>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">name</th>
+                <th scope="col">price</th>
+                <th scope="col">quantity</th>
+                <th scope="col">action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            <?php
+
+            if (isset($message)) {
+
+              
+
+                $str = '';
+
+                for ($i = 0; $i < count($message); $i++) {
+
+                    $str .= ' <tr>
+            <th>' . $message[$i]['productname'] . '</th>
+            <td >' . $message[$i]['price'] . '</td>
+            <td>' . $message[$i]['quantity'] . '</td>
+            <td>  <form method="post" action="updateproduct" class="form w-50 m-auto">
+
+            <p><input type="hidden" name="skuid" placeholder="sktuid" class="form-control" value=' . $message[$i]['sku'] . '></p>
+            <p><input type="hidden" name="productname" placeholder="sktuid" class="form-control" value=' . $message[$i]['productname']  . '></p>
+            <p><input type="hidden" name="price" placeholder="sktuid" class="form-control" value=' .$message[$i]['price']  . '></p>
+            <p><input type="hidden" name="quantity" placeholder="sktuid" class="form-control" value=' . $message[$i]['quantity']  . '></p>
+            <p><input type="submit" name="submit" value="update" class="btn btn-primary"></p>
+        </form></td>
+          </tr>';
+                }
+
+                echo $str . ' </tbody>
+        </table>';
+            }
+
+
+            ?>
+
+</body>
+
+</html>

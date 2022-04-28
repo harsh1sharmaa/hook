@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>rteyrturtuytu</h2>
+    <div>
+    <form action="/api/invoices/newuser" method="get">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br>
+        <label for="lname"> role:</label><br>
+        <input type="text" id="lname" name="role"><br>
+        <input type="hidden" id="lname" name="key" value="create"><br>
+        <input type="submit" id="lname" name="submit" value="submit">
+      </form><br>
+      for  products : <strong>/invoices/get?key={TOKEN}</strong>
+      <br>
+      for  search product : <strong>/invoices/search/{name}?key={TOKEN}</strong>
+      <br>
+      for product in limit : <strong>/invoices/get/{limit}?key={TOKEN}</strong>
+      <br>
+      for jump to  nth page : <strong>/invoices/get/{limit}/{pageno}?key={TOKEN}</strong><br><br>
+    </div>
+</body>
+</html>

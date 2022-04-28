@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <?php
+
+    // if (isset($message)) {
+    //     // echo "require_once";
+    //     // die;
+
+
+    //     $str = '<form method="post"  action=""><select id="name"  ;" name="id">';
+
+    //     for ($i = 0; $i < count($message); $i++) {
+
+    //         $str .= '<option value="' . $message[$i]["_id"]['$oid']. '">' . $message[$i]["name"] . '</option>';
+    //     }
+    //     // echo "<pre>";
+    //     // print_r($message[0]);
+    //     // print_r($message[0]["_id"]['$oid']);
+    //     // print_r($message[0]["name"]);
+    //     // echo "edge";
+    //     // die();
+    //     $str.='</select>';
+    // }
+
+
+    ?>
+
+    <div>
+        <form method="post" action="" class="form w-50 m-auto">
+        
+           <p> <input type="text" name="productname" placeholder="name" class="form-control"></p>
+            
+           <!-- <p> <input type="text" name="sku" placeholder="skuId" class="form-control"></p> -->
+           <p> <input type="number" name="price" placeholder="price" class="form-control"></p>
+           <p> <input type="number" name="quantity" class="form-control" placeholder="quantity"></p>
+            
+           <p> <input type="submit" name="submit" value="add product" class="form-control btn btn-primary"></p>
+        </form>
+    </div>
+
+    <!-- <a href="updateproduct">edit product</a> -->
+    <a href="displayproducts">display product</a>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>orders</h2>
+
+
+    <div class="container">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">image</th>
+                    <th scope="col">author name</th>
+                    <th scope="col">title</th>
+                    <th scope="col">status</th>
+                    <th scope="col">btn</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+
+                <?php
+                if (isset($message)) {
+
+                    $status = array("paid", "processing", "dispatched", "shipped", "refunded");
+
+
+                    $arr = $message;
+
+                    $arr = json_decode(json_encode($arr), 1);
+
+                    // echo $obj[0]['_id']['$oid'];
+                    // echo $obj['email'];
+                    // print_r( $arr[0]['email']);
+
+                    // die;
+                    // echo count($arr);
+                    // die;
+
+
+
+
+    //    echo count($arr);
+    //    die;
+
+                    $str = "";
+                    for ($j = 0; $j < count($arr); $j++) {
+                        $obj = $arr[$j];
+
+                        $currstatus = $obj['status'];
+
+                        // echo $currstatus;
+
+                        $drop = '<input type="hidden" name="orderId" class="orderId" value="' . $obj['_id']['$oid'] . '"><select name="status"  onchange="this.form.submit()" class="status">';
+                        for ($i = 0; $i < count($status); $i++) {
+
+                            if (strcmp($status[$i], $currstatus)) {
+
+                                $drop .= '<option value ="' . $status[$i] . '">' . $status[$i] . '</option>';
+                            } else {
+                                $drop .= '<option value ="' . $status[$i] . '" selected>' . $status[$i] . '</option>';
+                            }
+                        }
+                        $drop .= '</select>';
+                        // echo $data[$i]->name;
+                        $str .= '<tr>
+                        <td>' . $obj['productName'] . '</td>
+                        <td>' . $obj['quantity'] . '</td>
+                        <td>' . $obj['username'] . '</td>
+                        <td>' . $obj['email'] . '</td>
+                        <td><form method="post"  action="" >'. $drop . '</form></td>
+                         </tr>';
+                    }
+
+                    echo $str.'</tbody></table>';
+
+                    // echo $drop;
+                    // die();
+                }
+
+                ?>
+
+</body>
+
+</html>

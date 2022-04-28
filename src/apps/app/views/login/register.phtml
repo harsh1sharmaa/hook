@@ -1,0 +1,33 @@
+
+
+  <!-- Content here -->
+  
+
+        
+
+    <form action="" method="post" class="form w-50 m-auto ">
+        <input type="text" name="name" class="form-control m-4 " placeholder=<?php echo $this->locale->_("name") ?>>
+        <input type="text" name="email" class="form-control m-4" placeholder=<?php echo $this->locale->_("email") ?>>
+        <input type="text" name="password" class="form-control m-4 " placeholder=<?php echo $this->locale->_("password") ?>>
+        <input type="text" name="role" class="form-control m-4" placeholder=<?php echo $this->locale->_("role") ?>>
+        <input type="submit" name="submit" class="btn btn-primary" value=<?php echo $this->locale->_("submit") ?>>
+    </form>
+
+    <?php
+    $message =$this->request->getQuery('key');
+    if (isset($message) && $message!='') {
+
+     
+
+       echo "$message<br><br><br>
+       for  products : <strong>/api/products?key={TOKEN}</strong>
+       <br>
+       for  search product : <strong>/api/products/{page}/{limit}?key={TOKEN}</strong>
+       <br>
+       for product in limit : <strong>/api/products/search/{name}?key={TOKEN}</strong>
+       <br>
+       for jump to  nth page : <strong>/api/products/search/{name}/{limit}?key={TOKEN}</strong><br><br>";
+    }
+
+    ?>
+
